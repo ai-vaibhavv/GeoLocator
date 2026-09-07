@@ -4,3 +4,5 @@ outputs/
 predictions.csv
 *.pth
 *.pt
+.venv-dash/
+geo_dataset/

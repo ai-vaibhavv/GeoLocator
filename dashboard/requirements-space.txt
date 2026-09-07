@@ -1,0 +1,17 @@
+# What the Space's image installs. The CPU index keeps torch at ~200 MB instead
+# of pulling the ~2.5 GB CUDA build, which the free CPU hardware cannot use.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.28
+numpy==2.5.3
+pillow==12.3.0
+dash==4.4.1
+plotly==7.0.0
+gunicorn==23.0.0
+# Only used when GEO_HF_REPO is set, to pull weights from a Hub model repo
+# instead of committing them to the Space.
+huggingface_hub==1.30.0
+# scikit-learn is deliberately absent: assets/cells.npz already holds the
+# fitted partitions, so nothing refits k-means at startup.

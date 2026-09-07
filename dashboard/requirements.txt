@@ -1,0 +1,5 @@
+# Running the dashboard from the repo. The model itself needs the pins in the
+# repo-root requirements.txt (torch, torchvision, timm, numpy, scikit-learn,
+# pillow); this adds what the dashboard needs on top.
+dash==4.4.1
+plotly==7.0.0
