@@ -551,34 +551,11 @@ def layout():
                                         role="alert",
                                         **{"aria-live": "polite"},
                                     ),
-                                    html.Div(id="accuracy-note", className="hint"),
-                                    html.Div(
-                                        [
-                                            html.B("Europe only. "),
-                                            "The model was trained on "
-                                            f"{len(COUNTRIES)} countries and has no "
-                                            "class for anywhere else, so a photo "
-                                            "from outside them will still return "
-                                            "one of these, confidently and wrongly.",
-                                            html.Details(
-                                                [
-                                                    html.Summary(
-                                                        f"See the {len(COUNTRIES)} "
-                                                        "countries"
-                                                    ),
-                                                    html.Div(
-                                                        ", ".join(COUNTRIES) + ".",
-                                                        className="coverage-list",
-                                                    ),
-                                                ]
-                                            ),
-                                        ],
-                                        className="hint coverage",
-                                    ),
                                 ],
                                 className="card",
                             )
-                        ]
+                        ],
+                        className="area-controls",
                     ),
                     html.Div(
                         [
@@ -632,7 +609,41 @@ def layout():
                                 ],
                                 className="card",
                             ),
-                        ]
+                        ],
+                        className="area-results",
+                    ),
+                    # Stacked on a phone this lands after the pin, so a reader is
+                    # not scrolling through two screens of caveat to reach the
+                    # answer. On desktop it fills the left column under the
+                    # controls, where there was dead space.
+                    html.Div(
+                        [
+                            html.H2("How to read this"),
+                            html.Div(id="accuracy-note", className="hint"),
+                            html.Div(
+                                [
+                                    html.B("Europe only. "),
+                                    "The model was trained on "
+                                    f"{len(COUNTRIES)} countries and has no class "
+                                    "for anywhere else, so a photo from outside "
+                                    "them will still return one of these, "
+                                    "confidently and wrongly.",
+                                    html.Details(
+                                        [
+                                            html.Summary(
+                                                f"See the {len(COUNTRIES)} countries"
+                                            ),
+                                            html.Div(
+                                                ", ".join(COUNTRIES) + ".",
+                                                className="coverage-list",
+                                            ),
+                                        ]
+                                    ),
+                                ],
+                                className="hint coverage",
+                            ),
+                        ],
+                        className="card area-notes",
                     ),
                 ],
             ),

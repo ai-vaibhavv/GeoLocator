@@ -92,14 +92,27 @@ body {{
 .grid {{
     display: grid;
     grid-template-columns: minmax(320px, 5fr) 7fr;
+    grid-template-areas:
+        "controls results"
+        "notes    results";
     gap: 18px;
     margin-top: 18px;
     align-items: start;
 }}
+.area-controls {{ grid-area: controls; }}
+.area-results {{ grid-area: results; }}
+.area-notes {{ grid-area: notes; }}
 @media (max-width: 1020px) {{
-    .grid {{ grid-template-columns: 1fr; }}
+    /* Stacked, the caveats belong after the answer, not between the upload
+       control and the map. */
+    .grid {{
+        grid-template-columns: 1fr;
+        grid-template-areas: "controls" "results" "notes";
+    }}
     .masthead-stats {{ gap: 20px; }}
 }}
+.area-notes .hint {{ margin-top: 0; }}
+.area-notes .coverage {{ margin-top: 14px; }}
 
 .card {{
     background: #fff;
