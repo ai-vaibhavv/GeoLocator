@@ -13,7 +13,16 @@ this under the controls rather than letting the map imply global coverage.
 
 ## Run it locally
 
-From the repository root, with the root `requirements.txt` already installed:
+The weights are not in the repository (`model.pt` and `model_assets/` are
+gitignored), so a fresh clone needs them from the latest release:
+
+```
+gh release download --pattern 'model.pt' --dir .
+gh release download --pattern '*.npz' --pattern '*.json' --dir dashboard/model_assets
+```
+
+`index.npz` is only needed for the Mitron method; without it the app runs and
+hides that option. Then, with the root `requirements.txt` already installed:
 
 ```
 pip install -r dashboard/requirements.txt

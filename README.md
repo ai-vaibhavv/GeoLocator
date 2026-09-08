@@ -158,8 +158,9 @@ src/
 splits/                  train.csv (8,230), val.csv (1,764), test.csv (1,764)
 dashboard/               the deployed Dash app; see dashboard/README.md
 
-hgnetv2_b0.pth           ImageNet-1k backbone weights
+hgnetv2_b0.pth           ImageNet-1k backbone weights (not in git; see releases)
 model.pt                 shipped checkpoint, 4,518,887 params, epoch 82
+                         (not in git; attached to the latest release)
 predictions.csv          2,400 rows
 test_summary.json        head-only metrics on splits/test.csv
 ```
