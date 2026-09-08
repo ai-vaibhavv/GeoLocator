@@ -20,7 +20,7 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import inference
-from theme import BODY, CREAM, CSS, DEEP, FONTS, MINT, MUTED_TEXT
+from theme import BODY, CREAM, CSS, DEEP, FONTS, MINT
 
 # Per-protocol accuracy, measured on splits/test.csv by bench/protocol_metrics.
 # Each protocol gets its own ring, because they are not equally accurate: the
@@ -592,7 +592,7 @@ def layout():
                                         "filter": "blur(1px)",
                                     },
                                     custom_spinner=html.Div(
-                                        "Locating… this takes a few seconds",
+                                        "Locating…",
                                         className="loading-pill",
                                     ),
                                 ),

@@ -1,0 +1,18 @@
+# What Plotly Cloud installs for the hosted app.
+#
+# The CPU index keeps torch near 200 MB instead of pulling the ~2.5 GB CUDA
+# build. If Plotly Cloud ignores --extra-index-url, torch will still install,
+# just far larger and slower; drop the two lines below if the build fails.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.28
+numpy==2.5.3
+pillow==12.3.0
+dash==4.4.1
+plotly==7.0.0
+# Only used when the weights come from a Hub model repo (hf_repo.txt present).
+huggingface_hub==1.30.0
+# scikit-learn is deliberately absent: model_assets/cells.npz already holds the
+# fitted partitions, so nothing refits k-means at startup.

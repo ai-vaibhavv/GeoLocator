@@ -13,6 +13,17 @@ A **HGNetV2-B0** backbone serves a dual geo-cell classification head (64 coarse,
 | Default inference | 1-NN retrieval over backbone features |
 | Trained on | 8,230 labelled images, 92 epochs, ≈1 h 54 min on one NVIDIA A40 |
 | Test median error | **37.06 km** |
+| Live demo | **<https://24c16f08-880f-432f-8811-3667f58c689e.plotly.app/>** |
+
+---
+
+## Try it
+
+An interactive dashboard is deployed at
+<https://24c16f08-880f-432f-8811-3667f58c689e.plotly.app/>: upload a street
+level photo and it returns a coordinate, the most likely country, and a pin on
+a map, with a selector for all four inference protocols. Source and deployment
+notes are in [`dashboard/`](dashboard/README.md).
 
 ---
 
@@ -145,6 +156,7 @@ src/
 ├── anchor_rule.py       top-k anchor inference rule
 └── country_snap.py      country-snapping inference rule
 splits/                  train.csv (8,230), val.csv (1,764), test.csv (1,764)
+dashboard/               the deployed Dash app; see dashboard/README.md
 
 hgnetv2_b0.pth           ImageNet-1k backbone weights
 model.pt                 shipped checkpoint, 4,518,887 params, epoch 82

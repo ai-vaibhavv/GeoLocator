@@ -64,11 +64,31 @@ DEFAULT_PREDICTOR = "anchor+snap+topk"
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
-# Set GEO_HF_REPO to a Hugging Face model repo (e.g. "ai-vaibhavv/GeoLocator")
-# to pull the weights from the Hub instead of shipping them in the app repo.
-# Local files always win, so a checkout with weights present never hits the
-# network and the Hub is only consulted for what is genuinely missing.
-HF_REPO = os.environ.get("GEO_HF_REPO")
+def _configured_repo():
+    """The Hugging Face model repo to pull weights from, if any.
+
+    Read from GEO_HF_REPO, or from an hf_repo.txt beside this file. The file
+    exists because not every host lets you set environment variables, and the
+    weights have to come from somewhere when they are not in the bundle.
+
+    Returns:
+        A repo id string, or None.
+    """
+    env = os.environ.get("GEO_HF_REPO")
+    if env:
+        return env.strip()
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hf_repo.txt")
+    if os.path.exists(path):
+        with open(path) as f:
+            return f.read().strip() or None
+    return None
+
+
+# Set GEO_HF_REPO (or write hf_repo.txt) to pull the weights from a Hub model
+# repo instead of shipping them in the app bundle. Local files always win, so a
+# checkout with weights present never hits the network and the Hub is only
+# consulted for what is genuinely missing.
+HF_REPO = _configured_repo()
 
 
 def _from_hub(filename):
